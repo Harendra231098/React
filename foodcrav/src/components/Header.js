@@ -1,7 +1,18 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../public/logo.jpg'
 const Header = () =>{
   const [btnName,setBtnName] = useState('Login');
+
+  //if no depedency array => useEffect is called on every render
+  //if dependency array is empty = [] =>useEffect is called on initial render(jusct once)
+  //if depedency array is [btnName] => useEffect is called every time btnName is updated
+
+  //dont use anchor tags for routing in React because it loads whole page when click on the link
+  useEffect(()=>{
+    console.log('useEffectcalled');
+  },[]);
+
     return(
       <div className="header">
         <div className="logo-container">
@@ -9,9 +20,15 @@ const Header = () =>{
       </div>
       <div className="navbar">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li>Cart</li>
           <button onClick={()=>{btnName==='Login'?setBtnName('Logout'):setBtnName('Login')}}>{btnName}</button>
         </ul>

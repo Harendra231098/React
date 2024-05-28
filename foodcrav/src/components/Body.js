@@ -4,7 +4,12 @@ import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 const Body = () => {
 
-    //State Variable
+    //Local State Variable
+    //Try to create useState on top
+    //Never create useState in if condition.It will create a inconsistency
+    //Dont create useState inside a funtion they are meant to be created in funtional components
+
+    //Whenever state variables update,react triggers reconciliation cycle(re-renders the component)
     const [listRes,setListRes] = useState([]);
     const [searchText,setSearchText]=useState("");
     const [filteredlist,setFilteredList]=useState([]);
@@ -20,8 +25,8 @@ const Body = () => {
     // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     //optional chaining
-     setListRes(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredList(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setListRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
     
