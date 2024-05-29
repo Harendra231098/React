@@ -1,4 +1,4 @@
-import RestuarantCard from "./RestuarantCard";
+import RestuarantCard,{withPromotedLable} from "./RestuarantCard";
 import resObjs from "../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -15,7 +15,7 @@ const Body = () => {
     const [listRes,setListRes] = useState([]);
     const [searchText,setSearchText]=useState("");
     const [filteredlist,setFilteredList]=useState([]);
-
+    const RestuarantPromoted = withPromotedLable(RestuarantCard);
  
 
     useEffect(()=>{
@@ -30,8 +30,8 @@ const Body = () => {
     // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     //optional chaining
-     setListRes(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredList(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setListRes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setFilteredList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
     
@@ -46,7 +46,7 @@ if(onlineStatus === false) return <h1>Looks like you were offline</h1>
     <div className='body'>
       <div className='res-card flex justify-between'>
         <div className="search">
-            <input type='text' className="m-2.5 hover:border-collapse outline-none  border border-solid  border-b-orange-400 shadow-lg pb-1" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+            <input type='text' className="m-2.5 hover:border-collapse outline-none  border border-solid  border-b-orange-400 shadow-lg pb-1 pl-1 rounded-md" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
             <button onClick={()=>{
                 const filteredlist = listRes.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                 setFilteredList(filteredlist);
@@ -62,7 +62,15 @@ if(onlineStatus === false) return <h1>Looks like you were offline</h1>
       </div>
       <div className='flex flex-wrap'>
         {
-          filteredlist.map((resObj)=><Link className='no-underline' key={resObj.info.id} to={"/restaurant/"+resObj.info.id}> <RestuarantCard key={resObj.info.id} resdata={resObj} /> </Link>)
+          filteredlist.map((resObj)=>
+
+          <Link className='no-underline' key={resObj.info.id} to={"/restaurant/"+resObj.info.id}> 
+
+           {/*If a restuarant is promoted add a promoted label to it*/}
+           {resObj.info.avgRating > 4 ? <RestuarantPromoted key={resObj.info.id} resdata={resObj} /> :<RestuarantCard key={resObj.info.id} resdata={resObj}/>  } 
+           
+          </Link>)
+
         }  
       </div>
     </div>
