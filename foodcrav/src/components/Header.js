@@ -7,7 +7,6 @@ const Header = () =>{
   //if no depedency array => useEffect is called on every render
   //if dependency array is empty = [] =>useEffect is called on initial render(jusct once)
   //if depedency array is [btnName] => useEffect is called every time btnName is updated
-
   //dont use anchor tags for routing in React because it loads whole page when click on the link
   useEffect(()=>{
     console.log('useEffectcalled');
