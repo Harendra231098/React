@@ -30,8 +30,8 @@ const Body = () => {
     // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     //optional chaining
-     setListRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setListRes(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setFilteredList(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
     
@@ -44,25 +44,25 @@ if(onlineStatus === false) return <h1>Looks like you were offline</h1>
 
     return listRes.length === 0 ? <Shimmer /> : (
     <div className='body'>
-      <div className="search-filter">
+      <div className='res-card flex justify-between'>
         <div className="search">
-            <input type='text' className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+            <input type='text' className="m-2.5 hover:border-collapse outline-none  border border-solid  border-b-orange-400 shadow-lg pb-1" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
             <button onClick={()=>{
                 const filteredlist = listRes.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                 setFilteredList(filteredlist);
-            } }className='search-btn' >Search</button>
+            } }className='bg-orange-400 shadow-lg shadow-blue-500/50 hover:shadow-orange-500/50 text-white font-bold py-0 px-4 pb-1  rounded ' >Search</button>
         </div>
         
         <button onClick={()=>
         {
             setFilteredList(listRes.filter((res)=>res.info.avgRating > 4));
         }
-        } className="filter-btn">Top Rated Restaurants</button>
+        } className='bg-orange-400 shadow-lg shadow-blue-500/50 text-white font-bold py-0 pb-1 px-4 border rounded m-2 hover:shadow-orange-500/50'>Top Rated Restaurants</button>
         
       </div>
-      <div className='res-container'>
+      <div className='flex flex-wrap'>
         {
-          filteredlist.map((resObj)=><Link key={resObj.info.id} to={"/restaurant/"+resObj.info.id}> <RestuarantCard key={resObj.info.id} resdata={resObj} /> </Link>)
+          filteredlist.map((resObj)=><Link className='no-underline' key={resObj.info.id} to={"/restaurant/"+resObj.info.id}> <RestuarantCard key={resObj.info.id} resdata={resObj} /> </Link>)
         }  
       </div>
     </div>

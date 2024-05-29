@@ -5,8 +5,8 @@ const RestuarantCard=({resdata})=>{
     const {cloudinaryImageId,name,cuisines,avgRating} = resdata?.info;
     const {deliveryTime} = resdata.info?.sla;
   return(
-    <div className='res-card'>
-      <img className='res-logo' 
+    <div className='transition ease-in-out hover:scale-110 w-52 h-[22rem] p-2.5 m-2 rounded-xl bg-gray-100 border-2 hover:border-orange-200 shadow-lg'>
+      <img className='rounded-xl h-2/5 w-full object-cover' 
         src={CDN_URL+cloudinaryImageId}
         alt='res-logo'
       />

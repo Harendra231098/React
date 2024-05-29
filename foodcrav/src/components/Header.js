@@ -15,24 +15,24 @@ const Header = () =>{
   },[]);
 
     return(
-      <div className="header">
+      <div className="flex justify-between border shadow-lg" >
         <div className="logo-container">
-        <img className="logo" src={img} alt="food"/>
+        <img className="w-56" src={img} alt="food"/>
       </div>
       <div className="navbar">
-        <ul>
+        <ul className='flex p-10 space-x-6 list-none' >
           <li>Online Status : { onlineStatus? <span>🟢</span> : <span>🔴</span> } </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link className='no-underline' to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link className='no-underline' to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link className='no-underline' to="/contact">Contact Us</Link>
           </li>
           <li>
-            <Link to="/grocery">Grocery</Link>
+            <Link className='no-underline' to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
           <button onClick={()=>{btnName==='Login'?setBtnName('Logout'):setBtnName('Login')}}>{btnName}</button>
