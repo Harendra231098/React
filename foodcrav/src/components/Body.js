@@ -3,6 +3,7 @@ import resObjs from "../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
 
     //Local State Variable
@@ -14,6 +15,9 @@ const Body = () => {
     const [listRes,setListRes] = useState([]);
     const [searchText,setSearchText]=useState("");
     const [filteredlist,setFilteredList]=useState([]);
+
+ 
+
     useEffect(()=>{
         fetchData();
     },[]);
@@ -34,6 +38,9 @@ const Body = () => {
     //conditional rendering
    {/*if(listRes.length === 0)
 return <Shimmer />;*/}
+const onlineStatus = useOnlineStatus();
+
+if(onlineStatus === false) return <h1>Looks like you were offline</h1>
 
     return listRes.length === 0 ? <Shimmer /> : (
     <div className='body'>

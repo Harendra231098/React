@@ -2,13 +2,14 @@ import { useEffect,useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
+import useRestuarantMenu from "../utils/useRestuaranrMenu";
 const RestuarantMenu=()=>{
     
-    const [resInfo,setResInfo]=useState(null);
+   // const [resInfo,setResInfo]=useState(null);
     const {resId} = useParams();
-    console.log(resId);
+    const resInfo = useRestuarantMenu(resId); //customhook
     
-    useEffect(()=>{
+  /*  useEffect(()=>{
         fetchData();
     },[]);
 
@@ -18,9 +19,8 @@ const RestuarantMenu=()=>{
             const json = await data.json();
 
            //console.log(json?.data?.cards[2]?.card?.card?.info);
-           //console.log(json);
            setResInfo(json.data);
-        }
+        } */
 
         if(resInfo === null) return <Shimmer />
 
