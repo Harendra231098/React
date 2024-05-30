@@ -1,10 +1,13 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../public/logo.jpg'
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 const Header = () =>{
   const [btnName,setBtnName] = useState('Login');
   const onlineStatus = useOnlineStatus();
+  const user = useContext(UserContext);
+ console.log(user);
 
   //if no depedency array => useEffect is called on every render
   //if dependency array is empty = [] =>useEffect is called on initial render(jusct once)
@@ -36,7 +39,9 @@ const Header = () =>{
           </li>
           <li>Cart</li>
           <button onClick={()=>{btnName==='Login'?setBtnName('Logout'):setBtnName('Login')}}>{btnName}</button>
+          <li>{user.loggedInUser}</li>
         </ul>
+       
       </div>
   
     </div>

@@ -3,15 +3,7 @@ import ItemList from "./ItemList";
 
 const ResCategory=({category,item,OnClick})=>{
     const {itemCards,title} = category?.card?.card;
-    //console.log(itemCards);
-    //confirm.log(itemCards?.card?.info)
-   // const [showItem,setShowItem] = useState(false);
-
-
     const ch= item ? "size-5 rotate-180 transition" : "size-5";
-
-   // if(item)
-    //setShowItem((showItem)=>!showItem);
 
     return(
         <div className="w-6/12 bg-gray-100 mx-auto my-4 shadow-lg p-4">

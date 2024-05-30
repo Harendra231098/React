@@ -40,7 +40,6 @@ const RestuarantMenu=()=>{
         //console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
         const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((obj)=>obj?.card?.card?.["@type"]?.includes("v2.ItemCategory"));
-        console.log(categories);
 
     return (
         <div className="menu text-center">
@@ -49,7 +48,8 @@ const RestuarantMenu=()=>{
                 {cuisines.join(", ")+"-"+costForTwoMessage}
             </p>
             {/*categories accordians*/}
-            {categories.map((c,index)=> <ResCategory 
+            {categories.map((c,index)=> 
+            <ResCategory 
             key={c?.card?.card?.title} 
            // OnClick={(title1)=>{title1===c?.card?.card?.title &&  setShowItem((showItem)=>!showItem);}}
             item={index===showIndex} 

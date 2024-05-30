@@ -1,9 +1,12 @@
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const RestuarantCard=({resdata,hm})=>{
 
     const {cloudinaryImageId,name,cuisines,avgRating} = resdata?.info;
     const {deliveryTime} = resdata.info?.sla;
+    const user = useContext(UserContext);
   return(
     <div className='transition ease-in-out hover:scale-110 w-52 h-[22rem] p-2.5 m-2 rounded-xl bg-gray-100 border-2 shadow-lg'>
       {hm && hm}
@@ -11,10 +14,11 @@ const RestuarantCard=({resdata,hm})=>{
         src={CDN_URL+cloudinaryImageId}
         alt='res-logo'
       />
-      <h3>{name}</h3>
+      <h3 className="text-bold">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating+" ratings"}</h4>
       <h4>{deliveryTime+" mins"}</h4>
+      <h4>{user.loggedInUser}</h4>
     </div>
   );
   }

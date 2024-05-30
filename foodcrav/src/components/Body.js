@@ -1,9 +1,10 @@
 import RestuarantCard,{withPromotedLable} from "./RestuarantCard";
 import resObjs from "../utils/mockData";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Body = () => {
 
     //Local State Variable
@@ -16,8 +17,10 @@ const Body = () => {
     const [searchText,setSearchText]=useState("");
     const [filteredlist,setFilteredList]=useState([]);
     const RestuarantPromoted = withPromotedLable(RestuarantCard);
- 
-
+    const {loggedInUser,setUserName} = useContext(UserContext);
+    
+    console.log(loggedInUser);
+  
     useEffect(()=>{
         fetchData();
     },[]);
@@ -53,11 +56,14 @@ if(onlineStatus === false) return <h1>Looks like you were offline</h1>
             } }className='bg-orange-400 shadow-lg shadow-blue-500/50 hover:shadow-orange-500/50 text-white font-bold py-0 px-4 pb-1  rounded ' >Search</button>
         </div>
         
-        <button onClick={()=>
+      <button onClick={()=>
         {
             setFilteredList(listRes.filter((res)=>res.info.avgRating > 4));
         }
-        } className='bg-orange-400 shadow-lg shadow-blue-500/50 text-white font-bold py-0 pb-1 px-4 border rounded m-2 hover:shadow-orange-500/50'>Top Rated Restaurants</button>
+        } 
+        className='bg-orange-400 shadow-lg shadow-blue-500/50 text-white font-bold py-0 pb-1 px-4 border rounded m-2 hover:shadow-orange-500/50'>Top Rated Restaurants
+      </button>
+      <input type='text' className="m-2.5 hover:border-collapse outline-none  border border-solid  border-b-orange-400 shadow-lg pb-1 pl-1 rounded-md" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}/>
         
       </div>
       <div className='flex flex-wrap'>

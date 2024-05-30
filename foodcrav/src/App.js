@@ -1,4 +1,4 @@
-import React,{ lazy,Suspense } from 'react';
+import React,{ lazy,Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import RestuarantMenu from './components/RestuarantMenu';
 import Shimmer from './components/Shimmer';
+import UserContext from './utils/UserContext';
 //import Grocery from './components/Grocery';
 
 //chunking
@@ -20,18 +21,35 @@ import Shimmer from './components/Shimmer';
 const Grocery = lazy(() => import('./components/Grocery'));
 
 
-const AppLayout = () => (
-  <div className="app">
+const AppLayout = () => {
+  const [userName,setUserName] = useState(null);
+
+//authentication
+  useEffect(()=>{
+   // make an API call send user and password
+    const data = {
+      name:'Harendra'
+    }
+    setUserName(data.name);
+  },[])
+  return(
+    //wrapppring in app
+    //Anywhere iniside app component
+    //Default User
+    <UserContext.Provider value ={{loggedInUser : userName,setUserName }}>
+  { /*Harendra*/}
+    <div className="app">
+   { /* <UserContext.Provider value ={{loggedInUser : "Elon" }}> */}
+   { /*Elon Musk*/}
     <Header />
+   {/* </UserContext.Provider> */}
     <Outlet />
-    {/* if path= / 
-    <Body />
-     if path= /about
-    <About />
-    if path= /contact 
-    <Contact /> */}
   </div>
-);
+  </UserContext.Provider>
+
+  );
+}
+
 
 const appRouter = createBrowserRouter([
   {
