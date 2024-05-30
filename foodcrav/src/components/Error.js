@@ -84,4 +84,14 @@ export default Error;
 }
 .search-btn:hover{
     cursor: pointer;
-}*/
+}
+
+ <h2>Menu</h2>
+            <ul>
+                {itemCards.map((item)=>{
+                    const {id,name} = item?.card?.info;
+                    return <li key={id}>{name}</li>
+                })}
+            </ul>
+
+*/

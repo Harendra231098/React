@@ -3,11 +3,22 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
 import useRestuarantMenu from "../utils/useRestuaranrMenu";
+import ResCategory from "./ResCategory";
 const RestuarantMenu=()=>{
     
    // const [resInfo,setResInfo]=useState(null);
     const {resId} = useParams();
     const resInfo = useRestuarantMenu(resId); //customhook
+
+  //  const [showItem,setShowItem] = useState(false);
+    const [showIndex,setShowIndex] = useState(null);
+
+   /*const handleClick=()=>{
+         
+       // if(title===)
+        setShowItem((showItem)=>!showItem);
+
+    }
     
   /*  useEffect(()=>{
         fetchData();
@@ -26,19 +37,24 @@ const RestuarantMenu=()=>{
 
         const {id,name, cuisines, costForTwoMessage, cloudinaryImageId} = resInfo?.cards[2]?.card?.card?.info;
         const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-        console.log(itemCards);
+        //console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+        const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((obj)=>obj?.card?.card?.["@type"]?.includes("v2.ItemCategory"));
+        console.log(categories);
+
     return (
-        <div className="menu">
-            <h1>{name}</h1>
-            <p>{cuisines.join(", ")+"-"+costForTwoMessage}</p>
-            
-            <h2>Menu</h2>
-            <ul>
-                {itemCards.map((item)=>{
-                    const {id,name} = item?.card?.info;
-                    return <li key={id}>{name}</li>
-                })}
-            </ul>
+        <div className="menu text-center">
+            <h1 className="font-bold my-4 text-2xl">{name}</h1>
+            <p className="font-bold mb-4" >
+                {cuisines.join(", ")+"-"+costForTwoMessage}
+            </p>
+            {/*categories accordians*/}
+            {categories.map((c,index)=> <ResCategory 
+            key={c?.card?.card?.title} 
+           // OnClick={(title1)=>{title1===c?.card?.card?.title &&  setShowItem((showItem)=>!showItem);}}
+            item={index===showIndex} 
+            OnClick={()=>{ showIndex===index ? setShowIndex(null) : setShowIndex(index) }}
+            category={c} /> )}
         </div>
     );
 }
