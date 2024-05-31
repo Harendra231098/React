@@ -9,6 +9,9 @@ import Error from './components/Error';
 import RestuarantMenu from './components/RestuarantMenu';
 import Shimmer from './components/Shimmer';
 import UserContext from './utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
 //import Grocery from './components/Grocery';
 
 //chunking
@@ -33,19 +36,14 @@ const AppLayout = () => {
     setUserName(data.name);
   },[])
   return(
-    //wrapppring in app
-    //Anywhere iniside app component
-    //Default User
+    <Provider store={appStore}>
     <UserContext.Provider value ={{loggedInUser : userName,setUserName }}>
-  { /*Harendra*/}
     <div className="app">
-   { /* <UserContext.Provider value ={{loggedInUser : "Elon" }}> */}
-   { /*Elon Musk*/}
     <Header />
-   {/* </UserContext.Provider> */}
     <Outlet />
   </div>
   </UserContext.Provider>
+  </Provider>
 
   );
 }
@@ -76,6 +74,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/grocery",
         element:<Suspense fallback={<Shimmer /> }> <Grocery /> </Suspense>
+      },
+      {
+        path:"/cart",
+        element:<Cart />,
       },
     ]
   },

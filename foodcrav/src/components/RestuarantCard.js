@@ -14,7 +14,7 @@ const RestuarantCard=({resdata,hm})=>{
         src={CDN_URL+cloudinaryImageId}
         alt='res-logo'
       />
-      <h3 className="text-bold">{name}</h3>
+      <p className="font-bold">{name}</p>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating+" ratings"}</h4>
       <h4>{deliveryTime+" mins"}</h4>

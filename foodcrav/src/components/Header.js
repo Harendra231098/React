@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import img from '../../public/logo.jpg'
 import useOnlineStatus from '../utils/useOnlineStatus';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 const Header = () =>{
   const [btnName,setBtnName] = useState('Login');
   const onlineStatus = useOnlineStatus();
   const user = useContext(UserContext);
- console.log(user);
+  const cartItems = useSelector((store)=>store.cart.items)
+
+ 
+ 
 
   //if no depedency array => useEffect is called on every render
   //if dependency array is empty = [] =>useEffect is called on initial render(jusct once)
@@ -37,7 +41,9 @@ const Header = () =>{
           <li>
             <Link className='no-underline' to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li>
+          <Link className='no-underline' to="/cart">🛒({cartItems.length}) </Link>
+         </li>
           <button onClick={()=>{btnName==='Login'?setBtnName('Logout'):setBtnName('Login')}}>{btnName}</button>
           <li>{user.loggedInUser}</li>
         </ul>
