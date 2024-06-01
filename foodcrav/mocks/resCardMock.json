@@ -1,0 +1,95 @@
+{
+    "info": {
+        "id": "346678",
+        "name": "Wrap It - Eat Yummmm!",
+        "cloudinaryImageId": "s4muwh4kbrpjjn5x0xj8",
+        "locality": "1st Lane",
+        "areaName": "Dwarka Nagar",
+        "costForTwo": "₹299 for two",
+        "cuisines": [
+            "American",
+            "Burgers",
+            "Snacks",
+            "Fast Food",
+            "Continental",
+            "Salads",
+            "Healthy Food"
+        ],
+        "avgRating": 4.4,
+        "parentId": "12639",
+        "avgRatingString": "4.4",
+        "totalRatingsString": "1K+",
+        "sla": {
+            "deliveryTime": 70,
+            "lastMileTravel": 1.5,
+            "serviceability": "SERVICEABLE_WITH_BANNER",
+            "slaString": "65-70 mins",
+            "lastMileTravelString": "1.5 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextOpenTimeMessage": "Currently not taking orders for this location",
+            "nextCloseTime": "2024-06-01 05:00:00",
+            "opened": true
+        },
+        "badges": {
+            "textExtendedBadges": [
+                {
+                    "iconId": "guiltfree/GF_Logo_android_3x",
+                    "shortDescription": "options available",
+                    "fontColor": "#7E808C"
+                }
+            ]
+        },
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "",
+                                "fontColor": "#7E808C",
+                                "iconId": "guiltfree/GF_Logo_android_3x",
+                                "shortDescription": "options available"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "50% OFF",
+            "subHeader": "UPTO ₹100"
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+        "context": "seo-data-086ddbdd-cb97-4c3f-95b2-c010ade8cf1a"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/wrap-it-eat-yummmm-1st-lane-dwarka-nagar-vizag-346678",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}

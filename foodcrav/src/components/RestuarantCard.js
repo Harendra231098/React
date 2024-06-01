@@ -30,7 +30,7 @@ const RestuarantCard=({resdata,hm})=>{
    return (props)=>{
       return(
         <div>
-          <label className="absolute bg-black opacity-70 text-white ml-5 mt-3 rounded-md p-1 ">Cheff Kiss</label>
+          <label className="absolute bg-black opacity-70 text-white ml-5 mt-3 rounded-md p-1 ">Cheff Kiss</label> 
           <RestuarantCard {...props} hm={<label className="absolute bg-black opacity-70 text-white rounded-md p-1 ">Cheff Kiss</label>} />
         </div>
       );

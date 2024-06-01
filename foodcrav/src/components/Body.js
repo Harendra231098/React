@@ -18,30 +18,35 @@ const Body = () => {
     const [filteredlist,setFilteredList]=useState([]);
     const RestuarantPromoted = withPromotedLable(RestuarantCard);
     const {loggedInUser,setUserName} = useContext(UserContext);
+    const onlineStatus = useOnlineStatus();
     
     console.log(loggedInUser);
   
     useEffect(()=>{
+
         fetchData();
     },[]);
      
     const fetchData= async ()=>{
+
+
      const data =await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.7352775&lng=83.29995249999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");   
      const json = await data.json();
+     
 
     // console.log(json);
     // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     //optional chaining
-     setListRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setListRes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setFilteredList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
     
     //conditional rendering
    {/*if(listRes.length === 0)
 return <Shimmer />;*/}
-const onlineStatus = useOnlineStatus();
+
 
 if(onlineStatus === false) return <h1>Looks like you were offline</h1>
 

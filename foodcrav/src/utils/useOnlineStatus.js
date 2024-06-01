@@ -9,6 +9,8 @@ const useOnlineStatus=()=>{
         window.addEventListener("online",(event)=>setOnlineStataus(true));
         window.addEventListener("offline",(event)=>setOnlineStataus(false));
 
+        console.log("online");
+
     },[]);
 
     //boolean value
