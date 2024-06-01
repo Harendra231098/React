@@ -84,7 +84,6 @@ if(onlineStatus === false) return <h1>Looks like you were offline</h1>
 
         }  
       </div>
-    </div>
-    );
+    </div>);
 }
 export default Body;
