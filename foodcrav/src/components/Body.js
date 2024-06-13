@@ -38,8 +38,8 @@ const Body = () => {
     // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     //optional chaining
-     setListRes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setListRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
     
