@@ -72,8 +72,7 @@ const getSearchSuggestions = async() => {
         </div> 
         }
         </div>
-        <div>
-            <img className="h-8 m-2 col-span-1 " alt="user-icon" src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
+        <div>            
         </div>
     </div>
     )
